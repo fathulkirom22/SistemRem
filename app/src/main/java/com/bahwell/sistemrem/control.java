@@ -39,6 +39,11 @@ public class control {
         html.loadUrl("file:///android_asset/petunjuk.html");
     }
 
+    public void tentang(){
+        WebView html = (WebView) ((Activity) context).findViewById(R.id.tentang_html);
+        html.loadUrl("file:///android_asset/tentang.html");
+    }
+
     public void Update_materi(int v) {
         WebView html = (WebView) ((Activity) context).findViewById(R.id.materi_html);
         if (v==1){

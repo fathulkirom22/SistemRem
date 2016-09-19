@@ -9,6 +9,9 @@ public class tentang extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tentang);
+
+        control ctrl = new control(this);
+        ctrl.tentang();
     }
 
     //animation back
