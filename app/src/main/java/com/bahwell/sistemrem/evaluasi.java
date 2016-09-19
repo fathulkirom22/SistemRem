@@ -49,6 +49,8 @@ public class evaluasi extends Activity implements OnClickListener {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.back_in, R.anim.back_out);
+        ctrl.jwbBnr.clear();
+        ctrl.jwbOrng.clear();
         finish();
     }
     //on clik
