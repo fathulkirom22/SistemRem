@@ -15,6 +15,8 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        control ctrl = new control(this);
+
         Button petunjuk = (Button) findViewById(R.id.petujuk);
         petunjuk.setOnClickListener(this);
 
@@ -27,7 +29,7 @@ public class MainActivity extends Activity implements OnClickListener {
         Button tentang = (Button) findViewById(R.id.tentang);
         tentang.setOnClickListener(this);
 
-
+        ctrl.highscore();
     }
 
     public void onClick(View v) {

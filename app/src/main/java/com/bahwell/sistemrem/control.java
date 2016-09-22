@@ -1,5 +1,6 @@
 package com.bahwell.sistemrem;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,6 +18,8 @@ import com.bahwell.sistemrem.evaluasi;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.database.sqlite.SQLiteDatabase.*;
 
 /**
  * Created by bahwell on 05/09/16.
@@ -161,9 +164,35 @@ public class control {
         }
 
         viewScore.setText(Integer.toString(score));
-
+        updatehighscore(score);
         jwbBnr.clear();
         jwbOrng.clear();
     }
 
+    public void highscore(){
+        DBManager dataBaseHelper = new DBManager((Activity) context);
+        TextView viewScore = (TextView) ((Activity) context).findViewById(R.id.highScore);
+
+        try {
+            dataBaseHelper.createDataBase();
+            SQLiteDatabase db = dataBaseHelper.openDataBase();
+            Cursor cursor = db.rawQuery("SELECT * FROM score Where id = 1", null);
+            cursor.moveToFirst();
+            do {
+                //soal
+                String score = cursor.getString(cursor.getColumnIndex("highscore"));
+                viewScore.setText(score);
+            }while (cursor.moveToNext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updatehighscore(int updatehs) {
+        SQLiteDatabase myDB = DBManager.getReadbleDatabase();
+        ContentValues cv;
+        cv = new ContentValues();
+        cv.put("highscore", 3);
+        myDB.update(score, cv, "id=1", null);
+    }
 }

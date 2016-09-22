@@ -88,6 +88,23 @@
                 android:layout_marginBottom="10dp"/>
 
 
+            <TextView
+                android:id="@+id/highScore"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textColor="#000"
+                android:textSize="100sp"
+                android:gravity="center_vertical|center_horizontal"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textColor="#000"
+                android:textSize="30sp"
+                android:text="HIGHSCORE"
+                android:gravity="center_vertical|center_horizontal"/>
+
+
 
         </LinearLayout>
 
