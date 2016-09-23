@@ -26,28 +26,37 @@
                 android:textColor="#000"
                 android:textSize="100sp"
                 android:background="@drawable/bg_poin"
+                android:layout_marginBottom="20dp"
                 android:gravity="center_vertical|center_horizontal" />
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/score"
                 android:id="@+id/salah"
                 android:stretchColumns="*"
                 android:background="#f1f1f9">
                     <TableRow>
                         <TextView
                             android:text="No"
+                            android:gravity="center"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/brd_table"/>
                         <TextView
                             android:text="Jawaban Anda"
+                            android:gravity="center"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/brd_table"/>
                         <TextView
                             android:text="Jawaban Benar"
+                            android:gravity="center"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/brd_table"/>
                     </TableRow>
             </TableLayout>
 

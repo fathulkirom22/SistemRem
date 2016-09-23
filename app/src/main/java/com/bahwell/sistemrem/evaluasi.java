@@ -5,6 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -58,15 +64,19 @@ public class evaluasi extends Activity implements OnClickListener {
     public void onClick(View v){
         switch (v.getId()) {
             case R.id.jwb_a:
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 nextOrFinist(a);
                 break;
             case R.id.jwb_b:
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 nextOrFinist(b);
                 break;
             case R.id.jwb_c:
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 nextOrFinist(c);
                 break;
             case R.id.jwb_d:
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 nextOrFinist(d);
                 break;
         }
@@ -113,6 +123,5 @@ public class evaluasi extends Activity implements OnClickListener {
             finish();
         }
     }
-
 }
 
