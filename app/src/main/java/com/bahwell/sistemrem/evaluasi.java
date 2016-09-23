@@ -51,6 +51,7 @@ public class evaluasi extends Activity implements OnClickListener {
         overridePendingTransition(R.anim.back_in, R.anim.back_out);
         ctrl.jwbBnr.clear();
         ctrl.jwbOrng.clear();
+        ctrl.noSoal = 1;
         finish();
     }
     //on clik

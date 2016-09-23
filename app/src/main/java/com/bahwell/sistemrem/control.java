@@ -29,8 +29,7 @@ public class control {
     public static List<String> jwbOrng = new ArrayList<String>();
     public static List<String> jwbBnr = new ArrayList<String>();
 
-    public static String tempOrng = " ";
-    public static String tempBnr = " ";
+    public static int noSoal = 1;
 
     Context context;
     public control(Context context){
@@ -75,7 +74,7 @@ public class control {
     public void update_soal(int v){
         DBManager dataBaseHelper = new DBManager((Activity) context);
         //img
-        ImageView soal_img =(ImageView) ((Activity) context).findViewById(R.id.img_soal);
+        TextView no_soal = (TextView) ((Activity) context).findViewById(R.id.no_soal);
         //test
         TextView soal_text = (TextView) ((Activity) context).findViewById(R.id.text_soal);
         //button
@@ -92,6 +91,9 @@ public class control {
 
             evaluasi eva = new evaluasi();
             do {
+                //no
+                String tempNo = Integer.toString(noSoal) + "/40";
+                no_soal.setText(tempNo);
                 //soal
                 String soal = cursor.getString(cursor.getColumnIndex("text_soal"));
                 soal_text.setText(soal);
@@ -114,6 +116,7 @@ public class control {
                 eva.setJwbKunci(jwbKey);
 
                 jwbBnr.add(jwbKey);
+                noSoal ++;
 
             }while (cursor.moveToNext());
         } catch (Exception e) {
@@ -167,6 +170,7 @@ public class control {
         updatehighscore(score);
         jwbBnr.clear();
         jwbOrng.clear();
+        noSoal = 1;
     }
 
     public void highscore(){
@@ -188,11 +192,40 @@ public class control {
         }
     }
 
-    public void updatehighscore(int updatehs) {
-        SQLiteDatabase myDB = DBManager.getReadbleDatabase();
-        ContentValues cv;
-        cv = new ContentValues();
-        cv.put("highscore", 3);
-        myDB.update(score, cv, "id=1", null);
+    public boolean bandingkanscore(int v){
+        DBManager dataBaseHelper = new DBManager((Activity) context);
+        int oldscore;
+        try {
+            dataBaseHelper.createDataBase();
+            SQLiteDatabase db = dataBaseHelper.openDataBase();
+            Cursor cursor = db.rawQuery("SELECT * FROM score Where id = 1", null);
+            cursor.moveToFirst();
+
+            String score = cursor.getString(cursor.getColumnIndex("highscore"));
+            oldscore = Integer.parseInt(score);
+            if (oldscore > v){
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    public void updatehighscore(int v) {
+        DBManager dataBaseHelper = new DBManager((Activity) context);
+        if (bandingkanscore(v)){
+            try {
+                dataBaseHelper.createDataBase();
+                SQLiteDatabase db = dataBaseHelper.getWritableDatabase() ;
+                String strFilter = "id=1";
+                ContentValues args = new ContentValues();
+                args.put("highscore", v);
+                db.update("score", args, strFilter, null);
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

@@ -55,8 +55,6 @@ public class MainActivity extends Activity implements OnClickListener {
                 startActivity(new Intent(MainActivity.this, tentang.class));
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
-
-
         }
     }
 }

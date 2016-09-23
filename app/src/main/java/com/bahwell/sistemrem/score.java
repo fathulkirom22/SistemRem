@@ -1,5 +1,6 @@
 package com.bahwell.sistemrem;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -21,6 +22,8 @@ public class score extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.back_in, R.anim.back_out);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivityForResult(intent, 1);
         finish();
     }
 }
